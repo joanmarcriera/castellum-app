@@ -1,0 +1,49 @@
+# SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
+# Copyright 2026 Riera Technologies Ltd
+name: Bug report
+description: Something in Castellum does not work as expected
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting. **Do not paste real email, addresses, tokens or passwords.** Redact or use synthetic data.
+        Security problems go to the private channel in SECURITY.md, not here.
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened
+      description: What you did, what you expected, what you saw instead.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: "1. ...\n2. ...\n3. ..."
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Castellum version or commit
+    validations:
+      required: true
+  - type: input
+    id: macos
+    attributes:
+      label: macOS version and chip
+      placeholder: "e.g. macOS 15.x, Apple Silicon"
+    validations:
+      required: true
+  - type: input
+    id: provider
+    attributes:
+      label: Mail provider
+      description: Provider name only (e.g. Gmail, Fastmail, self-hosted Dovecot). No addresses.
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs or screenshots
+      description: Redact anything private first.
+      render: shell

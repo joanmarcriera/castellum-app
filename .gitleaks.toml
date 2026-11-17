@@ -1,0 +1,10 @@
+# Castellum - gitleaks configuration
+# SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
+# Copyright 2026 Riera Technologies Ltd
+#
+# gitleaks' default ruleset, no allowlist.
+
+title = "Castellum gitleaks config"
+
+[extend]
+useDefault = true

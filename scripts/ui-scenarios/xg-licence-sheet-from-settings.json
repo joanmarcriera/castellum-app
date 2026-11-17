@@ -1,0 +1,194 @@
+{
+ "schema": 1,
+ "name": "xg-licence-sheet-from-settings",
+ "covers": [
+  "Settings > Licence at minimum size: Activate\u2026 opens the activation sheet on the Settings window; an implausible key keeps Activate disabled and a UUID-shaped key enables it (no network call is made, the real licence host is blocked under UI scripts); Cancel closes it; opening it a second time starts with an empty field"
+ ],
+ "requires": {
+  "greenmail": false
+ },
+ "screen": {
+  "width": 1280,
+  "height": 768,
+  "menuBar": 25
+ },
+ "timeoutMs": 60000,
+ "steps": [
+  {
+   "op": "wait",
+   "until": "accountsLoaded"
+  },
+  {
+   "op": "wait",
+   "until": "settingsOpenerReady",
+   "timeoutMs": 15000
+  },
+  {
+   "op": "openWindow",
+   "target": "settings",
+   "tab": "licence"
+  },
+  {
+   "op": "wait",
+   "until": "window:settings"
+  },
+  {
+   "op": "resizeWindow",
+   "window": "settings",
+   "contentSize": "min"
+  },
+  {
+   "op": "wait",
+   "until": "idle"
+  },
+  {
+   "op": "accounts",
+   "id": "click",
+   "window": "settings",
+   "text": "61,251",
+   "name": "sheet:lic"
+  },
+  {
+   "op": "wait",
+   "until": "sheet:lic",
+   "timeoutMs": 5000
+  },
+  {
+   "op": "wait",
+   "until": "idle"
+  },
+  {
+   "op": "accounts",
+   "id": "setNth",
+   "window": "sheet:lic",
+   "name": "0",
+   "text": "definitely not a licence key, but a rather long sentence typed by mistake"
+  },
+  {
+   "op": "wait",
+   "until": "idle"
+  },
+  {
+   "op": "capture",
+   "name": "01-licence-sheet-garbage"
+  },
+  {
+   "op": "assert",
+   "window": "sheet:lic",
+   "rules": [
+    "nonBlank",
+    "fitsScreen",
+    "onScreen",
+    "noClippedText",
+    "noZeroSizeTextFields"
+   ]
+  },
+  {
+   "op": "accounts",
+   "id": "setNth",
+   "window": "sheet:lic",
+   "name": "0",
+   "text": "00000000-1111-2222-3333-444444444444"
+  },
+  {
+   "op": "wait",
+   "until": "idle"
+  },
+  {
+   "op": "capture",
+   "name": "01b-licence-sheet-uuid-key-enables-activate"
+  },
+  {
+   "op": "assert",
+   "window": "sheet:lic",
+   "rules": [
+    "nonBlank",
+    "noClippedText"
+   ],
+   "expect": [
+    {
+     "find": {
+      "label": "Activate"
+     },
+     "enabled": true
+    }
+   ]
+  },
+  {
+   "op": "accounts",
+   "id": "click",
+   "window": "sheet:lic",
+   "text": "284,160"
+  },
+  {
+   "op": "wait",
+   "until": "noSheet:lic",
+   "timeoutMs": 5000
+  },
+  {
+   "op": "accounts",
+   "id": "click",
+   "window": "settings",
+   "text": "61,251",
+   "name": "sheet:lic2"
+  },
+  {
+   "op": "wait",
+   "until": "sheet:lic2",
+   "timeoutMs": 5000
+  },
+  {
+   "op": "wait",
+   "until": "idle"
+  },
+  {
+   "op": "capture",
+   "name": "02-licence-sheet-reopened",
+   "windows": [
+    "sheet:lic2",
+    "settings"
+   ]
+  },
+  {
+   "op": "assert",
+   "window": "sheet:lic2",
+   "rules": [
+    "nonBlank",
+    "noClippedText"
+   ],
+   "expect": [
+    {
+     "model": "accounts:field:sheet:lic2|#0",
+     "equals": ""
+    }
+   ]
+  },
+  {
+   "op": "dismissSheet",
+   "window": "sheet:lic2"
+  },
+  {
+   "op": "wait",
+   "until": "noSheet:lic2",
+   "timeoutMs": 5000
+  },
+  {
+   "op": "capture",
+   "name": "03-licence-tab-after",
+   "windows": [
+    "settings"
+   ]
+  },
+  {
+   "op": "assert",
+   "window": "settings",
+   "rules": [
+    "nonBlank",
+    "fitsScreen"
+   ]
+  },
+  {
+   "op": "quit"
+  }
+ ]
+}

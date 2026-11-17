@@ -1,0 +1,650 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "Castellum code layers",
+    "output": "project-docs/architecture/castellum.architecture.html",
+    "quality_profile": "showcase",
+    "repository": {
+      "url": "git@github.com:joanmarcriera/castellum.git",
+      "link_mode": "local-only",
+      "revision": "e24cf6a4fce389d0823641f5f3531cbf37388815"
+    }
+  },
+  "components": [
+    {
+      "id": "share",
+      "type": "frontend",
+      "label": "Share Extension",
+      "sublabel": "App Group handoff only",
+      "pos": [
+        240,
+        40
+      ],
+      "size": [
+        170,
+        60
+      ],
+      "sources": [
+        {
+          "path": "apple/ShareExtension/ShareViewController.swift",
+          "line": 1,
+          "end_line": 10
+        },
+        {
+          "path": "apple/ShareExtension/ShareViewController.swift",
+          "line": 90,
+          "end_line": 94
+        }
+      ]
+    },
+    {
+      "id": "ui",
+      "type": "frontend",
+      "label": "AppKit UI",
+      "sublabel": "apple/Sources/Castellum/App",
+      "pos": [
+        560,
+        40
+      ],
+      "size": [
+        240,
+        64
+      ],
+      "tag": "Swift",
+      "sources": [
+        {
+          "path": "apple/Sources/Castellum/CastellumApp.swift",
+          "line": 7,
+          "end_line": 8
+        },
+        {
+          "path": "apple/Sources/Castellum/App/AppModel.swift",
+          "line": 51
+        },
+        {
+          "path": "apple/Sources/Castellum/App/AppModel.swift",
+          "line": 392
+        }
+      ]
+    },
+    {
+      "id": "keychain",
+      "type": "security",
+      "label": "Keychain store",
+      "sublabel": "AccountStore credentials",
+      "pos": [
+        900,
+        40
+      ],
+      "size": [
+        170,
+        60
+      ],
+      "sources": [
+        {
+          "path": "apple/Sources/Castellum/Core/AccountStore.swift",
+          "line": 1,
+          "end_line": 8
+        },
+        {
+          "path": "apple/Sources/Castellum/Core/KeychainBacking.swift",
+          "line": 32
+        }
+      ]
+    },
+    {
+      "id": "bridge",
+      "type": "frontend",
+      "label": "Swift bridge",
+      "sublabel": "CastellumCore.swift + header",
+      "pos": [
+        560,
+        170
+      ],
+      "size": [
+        240,
+        64
+      ],
+      "sources": [
+        {
+          "path": "apple/Sources/Castellum/Core/CastellumCore.swift",
+          "line": 28
+        },
+        {
+          "path": "apple/Sources/Castellum/Core/CastellumCore.swift",
+          "line": 34
+        },
+        {
+          "path": "apple/Castellum-Bridging-Header.h",
+          "line": 1,
+          "end_line": 3
+        }
+      ]
+    },
+    {
+      "id": "ffi",
+      "type": "backend",
+      "label": "castellum-ffi",
+      "sublabel": "libcastellum_ffi.a, castellum.h",
+      "pos": [
+        560,
+        300
+      ],
+      "size": [
+        240,
+        64
+      ],
+      "tag": "C ABI",
+      "sources": [
+        {
+          "path": "native/crates/castellum-ffi/Cargo.toml",
+          "line": 14
+        },
+        {
+          "path": "native/crates/castellum-ffi/src/lib.rs",
+          "line": 110
+        },
+        {
+          "path": "native/crates/castellum-ffi/include/castellum.h",
+          "line": 1,
+          "end_line": 10
+        }
+      ]
+    },
+    {
+      "id": "models",
+      "type": "backend",
+      "label": "models",
+      "sublabel": "shared DTOs",
+      "pos": [
+        220,
+        570
+      ],
+      "size": [
+        140,
+        60
+      ],
+      "sources": [
+        {
+          "path": "native/crates/castellum-models/src/lib.rs",
+          "line": 1,
+          "end_line": 6
+        }
+      ]
+    },
+    {
+      "id": "core",
+      "type": "backend",
+      "label": "castellum-core",
+      "sublabel": "sync, send, op replay, rules, AI orchestration",
+      "pos": [
+        220,
+        430
+      ],
+      "size": [
+        920,
+        64
+      ],
+      "tag": "Rust core",
+      "sources": [
+        {
+          "path": "native/crates/castellum-core/src/lib.rs",
+          "line": 168
+        },
+        {
+          "path": "native/crates/castellum-core/src/replay.rs",
+          "line": 1,
+          "end_line": 6
+        },
+        {
+          "path": "native/crates/castellum-core/src/sync.rs",
+          "line": 1293
+        }
+      ]
+    },
+    {
+      "id": "mail",
+      "type": "backend",
+      "label": "castellum-mail",
+      "sublabel": "MIME, sanitise",
+      "pos": [
+        30,
+        430
+      ],
+      "size": [
+        110,
+        64
+      ],
+      "sources": [
+        {
+          "path": "native/crates/castellum-mail/src/lib.rs",
+          "line": 1,
+          "end_line": 5
+        }
+      ]
+    },
+    {
+      "id": "db",
+      "type": "backend",
+      "label": "castellum-db",
+      "sublabel": "SQLite, FTS5, op queue",
+      "pos": [
+        390,
+        570
+      ],
+      "size": [
+        140,
+        60
+      ],
+      "sources": [
+        {
+          "path": "native/crates/castellum-db/src/lib.rs",
+          "line": 668,
+          "end_line": 669
+        },
+        {
+          "path": "native/crates/castellum-db/src/migrations/0005_operations.sql",
+          "line": 5
+        },
+        {
+          "path": "native/crates/castellum-db/src/migrations/0003_fts.sql",
+          "line": 4
+        }
+      ]
+    },
+    {
+      "id": "providers",
+      "type": "backend",
+      "label": "castellum-providers",
+      "sublabel": "provider traits",
+      "pos": [
+        1000,
+        570
+      ],
+      "size": [
+        130,
+        60
+      ],
+      "sources": [
+        {
+          "path": "native/crates/castellum-providers/src/lib.rs",
+          "line": 113
+        },
+        {
+          "path": "native/crates/castellum-providers/src/lib.rs",
+          "line": 604
+        },
+        {
+          "path": "native/crates/castellum-providers/src/lib.rs",
+          "line": 1340
+        }
+      ]
+    },
+    {
+      "id": "imap",
+      "type": "backend",
+      "label": "provider-imap",
+      "sublabel": "MailProvider impl",
+      "pos": [
+        550,
+        710
+      ],
+      "size": [
+        130,
+        60
+      ],
+      "sources": [
+        {
+          "path": "native/crates/castellum-provider-imap/src/lib.rs",
+          "line": 1132
+        }
+      ]
+    },
+    {
+      "id": "smtp",
+      "type": "backend",
+      "label": "provider-smtp",
+      "sublabel": "SmtpSender impl",
+      "pos": [
+        700,
+        710
+      ],
+      "size": [
+        130,
+        60
+      ],
+      "sources": [
+        {
+          "path": "native/crates/castellum-provider-smtp/src/lib.rs",
+          "line": 437
+        }
+      ]
+    },
+    {
+      "id": "ollama",
+      "type": "backend",
+      "label": "provider-ollama",
+      "sublabel": "AiBackend impl",
+      "pos": [
+        850,
+        710
+      ],
+      "size": [
+        130,
+        60
+      ],
+      "sources": [
+        {
+          "path": "native/crates/castellum-provider-ollama/src/lib.rs",
+          "line": 211
+        }
+      ]
+    },
+    {
+      "id": "mlx",
+      "type": "backend",
+      "label": "provider-mlx",
+      "sublabel": "on-device AiBackend",
+      "pos": [
+        1000,
+        710
+      ],
+      "size": [
+        130,
+        60
+      ],
+      "tag": "opt-in",
+      "sources": [
+        {
+          "path": "native/crates/castellum-provider-mlx/src/lib.rs",
+          "line": 62
+        },
+        {
+          "path": "native/crates/castellum-core/src/ai/mod.rs",
+          "line": 262,
+          "end_line": 264
+        }
+      ]
+    },
+    {
+      "id": "sqlite",
+      "type": "database",
+      "label": "Profile database",
+      "sublabel": "castellum.db",
+      "pos": [
+        390,
+        710
+      ],
+      "size": [
+        140,
+        60
+      ],
+      "sources": [
+        {
+          "path": "native/crates/castellum-db/src/lib.rs",
+          "line": 668,
+          "end_line": 669
+        }
+      ]
+    },
+    {
+      "id": "imapsrv",
+      "type": "external",
+      "label": "IMAP server",
+      "sublabel": "password auth",
+      "pos": [
+        550,
+        850
+      ],
+      "size": [
+        130,
+        60
+      ],
+      "sources": [
+        {
+          "path": "native/crates/castellum-provider-imap/src/lib.rs",
+          "line": 53,
+          "end_line": 59
+        }
+      ]
+    },
+    {
+      "id": "smtpsrv",
+      "type": "external",
+      "label": "SMTP server",
+      "sublabel": "password auth",
+      "pos": [
+        700,
+        850
+      ],
+      "size": [
+        130,
+        60
+      ],
+      "sources": [
+        {
+          "path": "native/crates/castellum-provider-smtp/src/lib.rs",
+          "line": 394
+        }
+      ]
+    },
+    {
+      "id": "ollamasrv",
+      "type": "external",
+      "label": "Ollama server",
+      "sublabel": "HTTP, configured URL",
+      "pos": [
+        850,
+        850
+      ],
+      "size": [
+        130,
+        60
+      ],
+      "sources": [
+        {
+          "path": "native/crates/castellum-provider-ollama/src/lib.rs",
+          "line": 129
+        }
+      ]
+    },
+    {
+      "id": "autocfg",
+      "type": "external",
+      "label": "Account auto-detect",
+      "sublabel": "DNS SRV/MX, autoconfig, ISPDB",
+      "pos": [
+        900,
+        300
+      ],
+      "size": [
+        170,
+        64
+      ],
+      "sources": [
+        {
+          "path": "native/crates/castellum-core/src/autoconfig.rs",
+          "line": 1,
+          "end_line": 23
+        },
+        {
+          "path": "native/crates/castellum-core/src/autoconfig.rs",
+          "line": 735
+        }
+      ]
+    }
+  ],
+  "connections": [
+    {
+      "id": "share-ui",
+      "from": "share",
+      "to": "ui",
+      "label": "App Group file",
+      "variant": "dashed"
+    },
+    {
+      "id": "ui-keychain",
+      "from": "ui",
+      "to": "keychain",
+      "label": "credentials"
+    },
+    {
+      "id": "ui-bridge",
+      "from": "ui",
+      "to": "bridge",
+      "label": "Swift calls"
+    },
+    {
+      "id": "bridge-ffi",
+      "from": "bridge",
+      "to": "ffi",
+      "label": "C ABI + JSON",
+      "variant": "emphasis"
+    },
+    {
+      "id": "ffi-core",
+      "from": "ffi",
+      "to": "core",
+      "label": "Profile handle",
+      "variant": "emphasis"
+    },
+    {
+      "id": "ffi-mail",
+      "from": "ffi",
+      "to": "mail",
+      "fromSide": "left",
+      "toSide": "top",
+      "via": [
+        [
+          85,
+          332
+        ]
+      ]
+    },
+    {
+      "id": "core-models",
+      "from": "core",
+      "to": "models"
+    },
+    {
+      "id": "core-mail",
+      "from": "core",
+      "to": "mail"
+    },
+    {
+      "id": "core-db",
+      "from": "core",
+      "to": "db"
+    },
+    {
+      "id": "core-providers",
+      "from": "core",
+      "to": "providers"
+    },
+    {
+      "id": "core-imap",
+      "from": "core",
+      "to": "imap"
+    },
+    {
+      "id": "core-smtp",
+      "from": "core",
+      "to": "smtp"
+    },
+    {
+      "id": "core-ollama",
+      "from": "core",
+      "to": "ollama"
+    },
+    {
+      "id": "core-mlx",
+      "from": "core",
+      "to": "mlx",
+      "variant": "dashed"
+    },
+    {
+      "id": "imap-providers",
+      "from": "imap",
+      "to": "providers"
+    },
+    {
+      "id": "smtp-providers",
+      "from": "smtp",
+      "to": "providers"
+    },
+    {
+      "id": "ollama-providers",
+      "from": "ollama",
+      "to": "providers"
+    },
+    {
+      "id": "mlx-providers",
+      "from": "mlx",
+      "to": "providers"
+    },
+    {
+      "id": "db-sqlite",
+      "from": "db",
+      "to": "sqlite",
+      "label": "rusqlite",
+      "variant": "emphasis"
+    },
+    {
+      "id": "imap-server",
+      "from": "imap",
+      "to": "imapsrv",
+      "label": "IMAP/TLS",
+      "variant": "emphasis"
+    },
+    {
+      "id": "smtp-server",
+      "from": "smtp",
+      "to": "smtpsrv",
+      "label": "SMTP/TLS",
+      "variant": "emphasis"
+    },
+    {
+      "id": "ollama-server",
+      "from": "ollama",
+      "to": "ollamasrv",
+      "label": "HTTP",
+      "variant": "emphasis"
+    },
+    {
+      "id": "core-autocfg",
+      "from": "core",
+      "to": "autocfg",
+      "label": "domain only"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "Layers",
+      "items": [
+        "apple/ : Swift/AppKit UI, links libcastellum_ffi.a",
+        "native/ : Rust workspace, owns all durable state",
+        "Rust owns SQLite, FTS5 and the operation queue"
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "Dependency notes",
+      "items": [
+        "models is also used by ffi, db, mail, smtp; smtp also uses mail (edges omitted)",
+        "ffi dev-deps: testutil, providers, db",
+        "testutil is a test-only crate"
+      ]
+    },
+    {
+      "dot": "rose",
+      "title": "Outside this view",
+      "items": [
+        "website/ : marketing site sources",
+        "native/fuzz : standalone cargo-fuzz crate (imap-codec)",
+        "Auth today is password/app-password; OAuth not built"
+      ]
+    }
+  ]
+}

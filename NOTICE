@@ -1,0 +1,11 @@
+Castellum
+
+Required Notice: Copyright 2026 Riera Technologies Ltd
+
+Castellum is licensed under the PolyForm Noncommercial License 1.0.0
+(see LICENSE, or https://polyformproject.org/licenses/noncommercial/1.0.0).
+Commercial use needs a separate paid licence: see COMMERCIAL.md.
+
+Castellum includes third-party software distributed under its own licences.
+The Rust dependencies are pinned in native/Cargo.lock, each under the licence
+its authors chose; those licences continue to apply to that code.

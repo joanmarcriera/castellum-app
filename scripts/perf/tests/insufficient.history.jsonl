@@ -1,0 +1,3 @@
+{"name":"list_first_page","measured":100,"unit":"ms","target":50.0,"ceiling":200.0,"verdict":"PASS","sha":"sha000","runner":"runner-a","load1":0.5,"ts":"2026-09-10T03:00:00Z"}
+{"name":"list_first_page","measured":103,"unit":"ms","target":50.0,"ceiling":200.0,"verdict":"PASS","sha":"sha001","runner":"runner-a","load1":0.5,"ts":"2026-09-11T03:00:00Z"}
+{"name":"list_first_page","measured":98,"unit":"ms","target":50.0,"ceiling":200.0,"verdict":"PASS","sha":"sha002","runner":"runner-a","load1":0.5,"ts":"2026-09-12T03:00:00Z"}

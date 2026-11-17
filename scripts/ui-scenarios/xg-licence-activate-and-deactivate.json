@@ -1,0 +1,208 @@
+{
+ "schema": 1,
+ "name": "xg-licence-activate-and-deactivate",
+ "covers": [
+  "#2263 S61 slice 2: Settings > Licence against the local licence mock (requires.licenseMock): a pasted key with a trailing space activates and the tab reads Licensed; Deactivate asks for confirmation, releases the seat and the tab returns to the beta line. The mock stands in for Lemon Squeezy; the real host is never contacted."
+ ],
+ "requires": {
+  "greenmail": false,
+  "licenseMock": true
+ },
+ "screen": {
+  "width": 1280,
+  "height": 768,
+  "menuBar": 25
+ },
+ "timeoutMs": 90000,
+ "steps": [
+  {
+   "op": "wait",
+   "until": "accountsLoaded"
+  },
+  {
+   "op": "wait",
+   "until": "settingsOpenerReady",
+   "timeoutMs": 15000
+  },
+  {
+   "op": "openWindow",
+   "target": "settings",
+   "tab": "licence"
+  },
+  {
+   "op": "wait",
+   "until": "window:settings"
+  },
+  {
+   "op": "resizeWindow",
+   "window": "settings",
+   "contentSize": "min"
+  },
+  {
+   "op": "wait",
+   "until": "idle"
+  },
+  {
+   "op": "capture",
+   "name": "01-licence-beta-line",
+   "windows": [
+    "settings"
+   ]
+  },
+  {
+   "op": "accounts",
+   "id": "pressExpect",
+   "window": "settings",
+   "find": {
+    "role": "button",
+    "label": "Activate\u2026"
+   },
+   "name": "sheet:lic"
+  },
+  {
+   "op": "wait",
+   "until": "sheet:lic",
+   "timeoutMs": 5000
+  },
+  {
+   "op": "wait",
+   "until": "idle"
+  },
+  {
+   "op": "accounts",
+   "id": "setNth",
+   "window": "sheet:lic",
+   "name": "0",
+   "text": "00000000-1111-2222-3333-444444444444 "
+  },
+  {
+   "op": "wait",
+   "until": "idle"
+  },
+  {
+   "op": "capture",
+   "name": "02-key-pasted-with-trailing-space",
+   "windows": [
+    "sheet:lic"
+   ]
+  },
+  {
+   "op": "press",
+   "window": "sheet:lic",
+   "find": {
+    "role": "button",
+    "label": "Activate"
+   }
+  },
+  {
+   "op": "wait",
+   "until": "noSheet:lic",
+   "timeoutMs": 10000
+  },
+  {
+   "op": "accounts",
+   "id": "waitNode",
+   "window": "settings",
+   "find": {
+    "text": "Licensed"
+   },
+   "value": true,
+   "timeoutMs": 10000
+  },
+  {
+   "op": "wait",
+   "until": "idle"
+  },
+  {
+   "op": "capture",
+   "name": "03-licensed",
+   "windows": [
+    "settings"
+   ]
+  },
+  {
+   "op": "assert",
+   "window": "settings",
+   "rules": [
+    "nonBlank",
+    "noClippedText",
+    "fitsScreen"
+   ]
+  },
+  {
+   "op": "wait",
+   "until": "idle"
+  },
+  {
+   "op": "press",
+   "window": "settings",
+   "find": {
+    "role": "button",
+    "label": "Deactivate"
+   }
+  },
+  {
+   "op": "wait",
+   "until": "window:sheetOf:settings",
+   "timeoutMs": 8000
+  },
+  {
+   "op": "accounts",
+   "id": "settle",
+   "text": "500"
+  },
+  {
+   "op": "capture",
+   "name": "04-deactivate-confirmation",
+   "windows": [
+    "sheetOf:settings",
+    "settings"
+   ]
+  },
+  {
+   "op": "press",
+   "window": "sheetOf:settings",
+   "find": {
+    "role": "button",
+    "label": "Deactivate"
+   }
+  },
+  {
+   "op": "accounts",
+   "id": "waitNode",
+   "window": "settings",
+   "find": {
+    "text": "Free during the beta"
+   },
+   "value": true,
+   "timeoutMs": 10000
+  },
+  {
+   "op": "wait",
+   "until": "idle"
+  },
+  {
+   "op": "capture",
+   "name": "05-back-to-beta-line",
+   "windows": [
+    "settings"
+   ]
+  },
+  {
+   "op": "assert",
+   "window": "settings",
+   "rules": [
+    "nonBlank",
+    "noClippedText",
+    "fitsScreen"
+   ]
+  },
+  {
+   "op": "quit"
+  }
+ ],
+ "licenseMockSaw": [
+  "activate",
+  "deactivate"
+ ]
+}

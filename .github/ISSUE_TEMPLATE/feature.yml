@@ -1,0 +1,40 @@
+# SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
+# Copyright 2026 Riera Technologies Ltd
+name: Feature request
+description: Suggest an improvement or a new provider preset
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Castellum is pre-1.0 and maintained in spare time. Small, well-scoped requests are easiest to act on.
+        Please do not include real mail content or addresses.
+  - type: textarea
+    id: problem
+    attributes:
+      label: The problem
+      description: What are you trying to do that is hard or impossible today?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed solution
+      description: What would you like to happen? Alternatives you considered?
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - Mail sync (IMAP/SMTP)
+        - Provider preset
+        - UI / keyboard
+        - Search
+        - Local AI
+        - Other
+  - type: checkboxes
+    id: help
+    attributes:
+      label: Contribution
+      options:
+        - label: I would be willing to help implement or test this

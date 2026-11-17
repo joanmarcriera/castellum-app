@@ -1,0 +1,6 @@
+{"name":"list_depth_ratio","measured":0.1,"unit":"ratio","target":1.0,"ceiling":5.0,"verdict":"PASS","sha":"s0","runner":"runner-a","load1":0.5,"ts":"2026-09-10T03:00:00Z"}
+{"name":"list_depth_ratio","measured":0.1,"unit":"ratio","target":1.0,"ceiling":5.0,"verdict":"PASS","sha":"s1","runner":"runner-a","load1":0.5,"ts":"2026-09-10T03:00:00Z"}
+{"name":"list_depth_ratio","measured":0.1,"unit":"ratio","target":1.0,"ceiling":5.0,"verdict":"PASS","sha":"s2","runner":"runner-a","load1":0.5,"ts":"2026-09-10T03:00:00Z"}
+{"name":"list_depth_ratio","measured":0.1,"unit":"ratio","target":1.0,"ceiling":5.0,"verdict":"PASS","sha":"s3","runner":"runner-a","load1":0.5,"ts":"2026-09-10T03:00:00Z"}
+{"name":"list_depth_ratio","measured":0.1,"unit":"ratio","target":1.0,"ceiling":5.0,"verdict":"PASS","sha":"s4","runner":"runner-a","load1":0.5,"ts":"2026-09-10T03:00:00Z"}
+{"name":"list_depth_ratio","measured":0.1,"unit":"ratio","target":1.0,"ceiling":5.0,"verdict":"PASS","sha":"s5","runner":"runner-a","load1":0.5,"ts":"2026-09-10T03:00:00Z"}

@@ -1,0 +1,2 @@
+{"name":"list_first_page","measured":112.0,"unit":"ms","target":50.0,"ceiling":200.0,"verdict":"PASS","sha":"sha011","runner":"runner-a","load1":0.5,"ts":"2026-09-21T03:00:00Z"}
+{"name":"open_profile","measured":19.5,"unit":"ms","target":50.0,"ceiling":200.0,"verdict":"PASS","sha":"sha011","runner":"runner-a","load1":0.5,"ts":"2026-09-21T03:00:00Z"}
