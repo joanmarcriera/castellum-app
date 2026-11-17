@@ -116,7 +116,7 @@ jobs:
         run: bash scripts/release-build.sh --version "${{ steps.v.outputs.version }}" --out dist
 
       - name: Upload the build as a workflow artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: castellum-${{ steps.v.outputs.version }}
           path: |
